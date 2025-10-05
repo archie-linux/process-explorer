@@ -109,6 +109,37 @@ class ProcessExplorer:
 
         row += 1
 
+        # Display cmdline if threads are enabled
+        if self.show_threads:
+            try:
+                cmd_indent = indent + "  " + " " * len(tree_symbol)
+                cmd_line = f"{cmd_indent}└─ {proc_info['cmdline'][:width-len(cmd_indent)-3]}"
+                if row < height - 1:
+                    stdscr.addstr(row, 0, cmd_line[:width])
+                    row += 1
+            except curses.error:
+                pass
+
+            # Display thread information if available
+            try:
+                process = psutil.Process(proc_info['pid'])
+                threads = process.threads()
+                thread_indent = cmd_indent + "  "
+
+                for i, thread in enumerate(threads):
+                    if row >= height - 1:
+                        break
+
+                    is_last_thread = i == len(threads) - 1
+                    thread_symbol = "└─ " if is_last_thread else "├─ "
+                    thread_line = (f"{thread_indent}{thread_symbol}TID: {thread.id}, "
+                                 f"CPU: {thread.user_time + thread.system_time:.1f}s")
+
+                    stdscr.addstr(row, 0, thread_line[:width])
+                    row += 1
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                pass
+
         # Draw children
         children = self.process_tree.get(pid, [])
         for i, child_pid in enumerate(children):
