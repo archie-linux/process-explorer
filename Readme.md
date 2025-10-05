@@ -9,6 +9,6 @@ Link: https://drive.google.com/file/d/1hbkkGwlfoUFEZsLmkAreuE_x_jrkAwxM/view?usp
 
 ### Link to AI Chats
 
-1. Claude: https://claude.ai/chat/b0366455-8589-4c49-a8a7-ffea70805962
+1. Claude: <a href="https://github.com/anpa6841/process-explorer/blob/master/Process Explorer Claude.pdf">Process Explorer</a> 
 
-2. ChatGPT: https://chatgpt.com/c/6781df11-bc9c-8006-a56c-57bd06d59f9a (Helper Script)
+2. ChatGPT: https://chatgpt.com/share/678316bb-f4d8-8006-9f54-efdf52c37a05 (Helper Script)

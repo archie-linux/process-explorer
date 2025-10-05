@@ -28,12 +28,12 @@ def child_process(process_id):
     num_threads = 4  # Number of threads per child process
     spawn_threads(num_threads, process_id)
 
-# Main function to spawn two child processes
+# Main function to spawn five child processes
 if __name__ == "__main__":
-    print(f"Parent Process PID {os.getpid()} spawning two child processes.")
+    print(f"Parent Process PID {os.getpid()} spawning five child processes.")
     
     processes = []
-    for process_id in range(5):  # Spawn two child processes
+    for process_id in range(5):  # Spawn five child processes
         process = multiprocessing.Process(target=child_process, args=(process_id,))
         processes.append(process)
         process.start()
